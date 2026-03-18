@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>J&JD Landscaping LLC — Plano, TX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --soil: #2C1A0E;
+      --bark: #4A2E1A;
+      --moss: #3D5A2A;
+      --grass: #5C7A3E;
+      --sage: #8FA67A;
+      --cream: #F5F0E8;
+      --warm-white: #FDFAF5;
+      --gold: #C9A84C;
+      --gold-light: #E8C97A;
+      --text: #1C1208;
+      --muted: #6B5E4E;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--warm-white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 4rem;
+      background: rgba(253, 250, 245, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(44, 26, 14, 0.08);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--soil);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo span {
+      color: var(--moss);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--moss); }
+
+    .nav-cta {
+      background: var(--moss);
+      color: white !important;
+      padding: 0.6rem 1.4rem;
+      border-radius: 2px;
+      font-size: 0.8rem !important;
+      letter-spacing: 0.1em !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--bark) !important; color: white !important; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 5rem 6rem 6rem;
+      position: relative;
+    }
+
+    .hero-left::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 15%; bottom: 15%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--sage), transparent);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--moss);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--moss);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 5vw, 5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      color: var(--soil);
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--moss);
+    }
+
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 420px;
+      margin-bottom: 3rem;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+
+    .btn-primary {
+      background: var(--soil);
+      color: var(--cream);
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 2px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--moss);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      color: var(--soil);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: gap 0.2s;
+    }
+
+    .btn-secondary:hover { gap: 0.75rem; }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(44, 26, 14, 0.1);
+      animation: fadeUp 0.7s 0.4s ease both;
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--soil);
+      line-height: 1;
+    }
+
+    .stat-num span {
+      color: var(--moss);
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+
+    /* ===== HERO RIGHT ===== */
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      background: var(--soil);
+    }
+
+    .hero-img-grid {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      height: 100%;
+    }
+
+    .hero-img-top {
+      background: linear-gradient(135deg, #3D5A2A 0%, #2C4018 50%, #1A2A0E 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-img-top::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 30% 40%, rgba(93, 122, 62, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 70% 60%, rgba(201, 168, 76, 0.15) 0%, transparent 40%);
+    }
+
+    .leaf-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.06;
+      background-image: 
+        radial-gradient(circle, #8FA67A 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    .hero-plant-icon {
+      font-size: 8rem;
+      opacity: 0.3;
+      position: relative;
+      z-index: 1;
+      animation: sway 6s ease-in-out infinite;
+    }
+
+    @keyframes sway {
+      0%, 100% { transform: rotate(-3deg); }
+      50% { transform: rotate(3deg); }
+    }
+
+    .hero-img-bottom {
+      background: var(--bark);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-img-bottom::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 150px; height: 150px;
+      border-radius: 50%;
+      background: rgba(201, 168, 76, 0.08);
+    }
+
+    .review-card {
+      position: relative;
+      z-index: 1;
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.8rem;
+    }
+
+    .review-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .review-author {
+      font-size: 0.8rem;
+      color: var(--sage);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .review-badge {
+      position: absolute;
+      bottom: 2.5rem;
+      right: 2.5rem;
+      background: var(--gold);
+      color: var(--soil);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.7rem;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .review-badge .score {
+      font-size: 1.1rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* ===== SERVICES ===== */
+    .services {
+      padding: 8rem 6rem;
+      background: var(--cream);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 5rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--moss);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--moss);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      color: var(--soil);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .service-card {
+      background: var(--warm-white);
+      padding: 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s;
+      cursor: default;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      z-index: 2;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--moss);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+      transform-origin: left;
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .service-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--soil);
+      margin-bottom: 0.8rem;
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .service-num {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: rgba(44, 26, 14, 0.04);
+      line-height: 1;
+    }
+
+    /* ===== WHY US ===== */
+    .why {
+      padding: 8rem 6rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8rem;
+      align-items: center;
+    }
+
+    .why-visual {
+      position: relative;
+    }
+
+    .why-main-box {
+      background: var(--moss);
+      border-radius: 4px;
+      padding: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-main-box::before {
+      content: '';
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.1);
+    }
+
+    .why-main-box::after {
+      content: '';
+      position: absolute;
+      bottom: -20px; left: -20px;
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: rgba(201, 168, 76, 0.2);
+    }
+
+    .why-big-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 6rem;
+      font-weight: 900;
+      color: white;
+      line-height: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .why-big-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .why-float-card {
+      position: absolute;
+      bottom: -2rem;
+      right: -2rem;
+      background: var(--warm-white);
+      padding: 1.5rem 2rem;
+      border-radius: 4px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+      z-index: 2;
+    }
+
+    .why-float-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--soil);
+      margin-bottom: 0.3rem;
+    }
+
+    .why-float-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .why-float-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .why-content { }
+
+    .why-list {
+      list-style: none;
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .why-item {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
+
+    .why-check {
+      width: 24px;
+      height: 24px;
+      background: var(--moss);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .why-item-text {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .why-item-text strong {
+      color: var(--soil);
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+    }
+
+    /* ===== REVIEWS ===== */
+    .reviews {
+      padding: 8rem 6rem;
+      background: var(--soil);
+    }
+
+    .reviews .section-eyebrow { color: var(--sage); }
+    .reviews .section-eyebrow::before { background: var(--sage); }
+    .reviews .section-title { color: var(--cream); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .review-item {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 2.5rem;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    .review-item:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .review-item .stars {
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .review-item .review-text {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .review-item .review-author {
+      color: var(--sage);
+      font-size: 0.75rem;
+    }
+
+    /* ===== CTA ===== */
+    .cta-section {
+      padding: 8rem 6rem;
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .cta-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      color: var(--soil);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-title em {
+      font-style: italic;
+      color: var(--moss);
+    }
+
+    .cta-sub {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-top: 1rem;
+      line-height: 1.7;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+      flex-shrink: 0;
+    }
+
+    .phone-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--soil);
+      letter-spacing: -0.02em;
+    }
+
+    .phone-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--bark);
+      padding: 3rem 6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--cream);
+    }
+
+    .footer-logo span { color: var(--sage); }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(245, 240, 232, 0.5);
+    }
+
+    .footer-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--sage);
+    }
+
+    /* ===== MOCKUP BANNER ===== */
+    .mockup-banner {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--soil);
+      padding: 0.7rem 2rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      z-index: 999;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MOCKUP BANNER -->
+  <div class="mockup-banner">⚡ Website Mockup — J&JD Landscaping LLC</div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">J&<span>JD</span> Landscaping</div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-badge">Plano, TX — Serving DFW Since Day One</div>
+      <h1>Your Yard,<br /><em>Transformed.</em></h1>
+      <p class="hero-sub">Expert landscaping for Plano homeowners who take pride in their outdoor space. Professional results. Every time.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Get a Free Quote</a>
+        <a href="tel:2146737929" class="btn-secondary">Call (214) 673-7929 →</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">5<span>.0</span></div>
+          <div class="stat-label">Star Rating</div>
+        </div>
+        <div>
+          <div class="stat-num">142<span>+</span></div>
+          <div class="stat-label">Happy Clients</div>
+        </div>
+        <div>
+          <div class="stat-num">100<span>%</span></div>
+          <div class="stat-label">Satisfaction</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-img-grid">
+        <div class="hero-img-top">
+          <div class="leaf-pattern"></div>
+          <div class="hero-plant-icon">🌿</div>
+        </div>
+        <div class="hero-img-bottom">
+          <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"Amazing work, cleaned up our overgrown back yard and made it look absolutely beautiful."</p>
+            <div class="review-author">— Google Review</div>
+          </div>
+          <div class="review-badge">
+            <span class="score">5.0</span>
+            <span>Google</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-header fade-in">
+      <div>
+        <div class="section-eyebrow">What We Do</div>
+        <h2 class="section-title">Full-Service<br />Landscaping</h2>
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <span class="service-num">01</span>
+        <span class="service-icon">🌱</span>
+        <div class="service-name">Lawn Maintenance</div>
+        <p class="service-desc">Regular mowing, edging, trimming, and cleanup to keep your lawn looking pristine week after week.</p>
+      </div>
+      <div class="service-card fade-in" style="transition-delay: 0.1s">
+        <span class="service-num">02</span>
+        <span class="service-icon">🌳</span>
+        <div class="service-name">Yard Cleanup</div>
+        <p class="service-desc">Overgrown yards transformed. We clear debris, trim overgrowth, and restore order to any outdoor space.</p>
+      </div>
+      <div class="service-card fade-in" style="transition-delay: 0.2s">
+        <span class="service-num">03</span>
+        <span class="service-icon">🌺</span>
+        <div class="service-name">Bed Maintenance</div>
+        <p class="service-desc">Flower bed weeding, mulching, and seasonal planting to add color and curb appeal to your property.</p>
+      </div>
+      <div class="service-card fade-in" style="transition-delay: 0.3s">
+        <span class="service-num">04</span>
+        <span class="service-icon">✂️</span>
+        <div class="service-name">Tree & Shrub Trimming</div>
+        <p class="service-desc">Professional pruning and shaping to keep your trees and shrubs healthy, safe, and beautiful.</p>
+      </div>
+      <div class="service-card fade-in" style="transition-delay: 0.4s">
+        <span class="service-num">05</span>
+        <span class="service-icon">🏡</span>
+        <div class="service-name">Landscape Design</div>
+        <p class="service-desc">From simple refreshes to full outdoor transformations — we help you envision and build the yard you deserve.</p>
+      </div>
+      <div class="service-card fade-in" style="transition-delay: 0.5s">
+        <span class="service-num">06</span>
+        <span class="service-icon">🍂</span>
+        <div class="service-name">Seasonal Services</div>
+        <p class="service-desc">Leaf removal, seasonal cleanups, and year-round care plans to keep your property looking great every season.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why" id="why">
+    <div class="why-visual fade-in">
+      <div class="why-main-box">
+        <div class="why-big-num">142</div>
+        <div class="why-big-label">5-Star Google Reviews</div>
+      </div>
+      <div class="why-float-card">
+        <div class="why-float-icon">📍</div>
+        <div class="why-float-title">Local to Plano</div>
+        <div class="why-float-sub">Serving Plano & surrounding DFW</div>
+      </div>
+    </div>
+
+    <div class="why-content fade-in" style="transition-delay: 0.2s">
+      <div class="section-eyebrow">Why J&JD</div>
+      <h2 class="section-title">We Show Up.<br />We Deliver.</h2>
+      <ul class="why-list">
+        <li class="why-item">
+          <div class="why-check">✓</div>
+          <div class="why-item-text">
+            <strong>Punctual and Professional</strong>
+            We arrive when we say we will and leave your property cleaner than we found it.
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-check">✓</div>
+          <div class="why-item-text">
+            <strong>Honest Pricing</strong>
+            No surprise charges. We quote upfront and stick to it every time.
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-check">✓</div>
+          <div class="why-item-text">
+            <strong>Quality You Can See</strong>
+            Our 5.0 star rating across 142 reviews speaks for itself. We take every job seriously.
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-check">✓</div>
+          <div class="why-item-text">
+            <strong>Locally Owned</strong>
+            We are your neighbors. We care about this community and it shows in every yard we touch.
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="fade-in">
+      <div class="section-eyebrow">What Clients Say</div>
+      <h2 class="section-title">142 Reasons<br />To Trust Us</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-item fade-in">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Amazing work, cleaned up our overgrown back yard and made it look absolutely beautiful. On time, professional, and did everything just the way we wanted."</p>
+        <div class="review-author">— Google Review · Plano, TX</div>
+      </div>
+      <div class="review-item fade-in" style="transition-delay: 0.1s">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"They were on time, professional, and did everything just the way I wanted. I could not be happier with the results. Will definitely be calling them again."</p>
+        <div class="review-author">— Google Review · Plano, TX</div>
+      </div>
+      <div class="review-item fade-in" style="transition-delay: 0.2s">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Great service and great pricing. My yard has never looked better. These guys take real pride in their work and it shows. Highly recommend to anyone in the area."</p>
+        <div class="review-author">— Google Review · Plano, TX</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contact">
+    <div class="fade-in">
+      <h2 class="cta-title">Ready for a Yard<br />You're <em>Proud Of?</em></h2>
+      <p class="cta-sub">Give us a call or send a message. We will get back to you fast with a free quote for your property.</p>
+    </div>
+    <div class="cta-actions fade-in" style="transition-delay: 0.15s">
+      <div class="phone-label">Call Us Directly</div>
+      <div class="phone-num">(214) 673-7929</div>
+      <a href="tel:2146737929" class="btn-primary">Call Now →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">J&<span>JD</span> Landscaping LLC</div>
+    <div class="footer-tagline">"Your yard, transformed."</div>
+    <div class="footer-copy">© 2026 J&JD Landscaping LLC · Plano, TX</div>
+  </footer>
+
+  <script>
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
